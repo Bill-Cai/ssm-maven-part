@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.example</groupId>
+    <artifactId>maven-pom-dependencies-04</artifactId>      <!-- groupId和artifactId声明之后不改变 -->
+    <version>1.0-SNAPSHOT</version>                         <!-- 构建和部署时修改 -->
+    <packaging>jar</packaging>                              <!-- jar、war、pom -->
+
+    <properties>
+        <maven.compiler.source>1.8</maven.compiler.source>  <!-- Java版本 -->
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding> <!-- 编码 -->
+
+        <jackson.version>2.16.2</jackson.version>
+    </properties>
+
+    <!--    第三方依赖
+                dependencies - 项目依赖集合
+                    dependency  - 项目依赖
+                        gav - 组ID、artifactId、版本号
+            三方依赖查询
+                官网：https://mvnrepository.com/
+                插件：maven-search
+
+            1. 可以在 properties 中定义版本号，使用 ${} 占位符引用
+            2. 可选属性 scope 定义引入依赖的作用域
+                compile（默认）：在 main、test 打包和运行时都可用
+                test：在 test 打包和运行时可用。【Example：junit包，@Test注解】
+                runtime：在 main 和 test 不用，打包和运行时可用
+                provided：在 main 和 test 用，打包和运行时不可用【Example：Servlet包】
+                总结：不确定就默认，直接全部生效。
+
+    -->
+    <dependencies>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13.2</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+</project>
